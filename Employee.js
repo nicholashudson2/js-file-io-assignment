@@ -1,38 +1,25 @@
 'use strict'
 
-const fs = require('fs')
+const fs = require('fs');
+
+const path = require('path');
 
 class Employee {
-  constructor() {
-
-    const Employee = function (name, title, salary){ //function (name, title, salary) 
-      this.name = name
-      this.title = title
-      this.salary = salary
-
-      this.promote = (newTitle, newSalary) => {
-        this.title = newTitle
-        this.salary = newSalary
-      }
-    
-    function parseFromFilePath (file, callback) {
-      fs.readFileSync(file, (err, data) => {
-        const fileData = JSON.parseSync(data)
-        this.name = fileData.name
-        this.title = fileData.title
-        this.salary = fileName.salary
-        callback
-      }
-      )
-    }
-  }
-    // TODO ???
+  constructor(data) {
+    this.name = data.name
+    this.title = data.title
+    this.salary = data.salary
   }
 
+  promote(newTitle, newSalary) {
+    this.title = newTitle
+    this.salary = newSalary
+  }
+
+  static parseFromFilePath(file) {
+    return new Employee(JSON.parse(fs.readFileSync(file)))
+  }
 }
-
-
-// TODO ???
 
 module.exports = {
   Employee
