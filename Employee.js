@@ -1,7 +1,6 @@
 'use strict'
 
 const fs = require('fs');
-
 const path = require('path');
 
 // Class to instantiate new objects of type "Employee"
